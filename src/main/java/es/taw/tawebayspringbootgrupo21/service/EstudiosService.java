@@ -1,8 +1,8 @@
 package es.taw.tawebayspringbootgrupo21.service;
 
 
+import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
 import es.taw.tawebayspringbootgrupo21.dao.analista.EstudiosRepository;
-import es.taw.tawebayspringbootgrupo21.dao.analista.UsuarioRepository;
 import es.taw.tawebayspringbootgrupo21.dto.EstudiosDTO;
 import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
 import es.taw.tawebayspringbootgrupo21.entity.Estudios;

@@ -1,8 +1,8 @@
-package es.taw.tawebayspringbootgrupo21.controller;
+package es.taw.tawebayspringbootgrupo21.controller.marketing;
 
-import es.taw.tawebayspringbootgrupo21.dao.listas.ListaRepository;
-import es.taw.tawebayspringbootgrupo21.dao.listas.UsuarioHasListaRepository;
-import es.taw.tawebayspringbootgrupo21.dao.analista.UsuarioRepository;
+import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
+import es.taw.tawebayspringbootgrupo21.dao.marketing.ListaRepository;
+import es.taw.tawebayspringbootgrupo21.dao.marketing.UsuarioHasListaRepository;
 import es.taw.tawebayspringbootgrupo21.entity.Lista;
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
 import es.taw.tawebayspringbootgrupo21.entity.UsuarioHasLista;
@@ -11,8 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 public class ListaController {
@@ -26,7 +29,6 @@ public class ListaController {
     public ListaRepository getListaRepository(){
         return listaRepository;
     }
-
     public UsuarioHasListaRepository getUsuarioHasListaRepository() {
         return usuarioHasListaRepository;
     }
@@ -57,8 +59,6 @@ public class ListaController {
         return result;
     }
 
-
-
     @GetMapping("/nuevoLista")
     public String nuevoLista(Model model){
         Integer id = (Integer) model.getAttribute("id");
@@ -66,7 +66,14 @@ public class ListaController {
             Lista lista = this.listaRepository.findByListaId(id);
             model.addAttribute("lista", lista);
         }
-        return "crearLista";
+        return "lista";
+    }
+
+    @GetMapping("/editLista/{idL}")
+    public String editLista(Model model,@PathVariable("idL") Integer idL){
+            Lista lista = this.listaRepository.findByListaId(idL);
+            model.addAttribute("lista", lista);
+        return "lista";
     }
 
     @GetMapping("/Lista/{idL}/add/{idC}")
@@ -102,6 +109,14 @@ public class ListaController {
             this.usuarioHasListaRepository.delete(usuarioHasLista);
         }
         return "redirect:/verLista/{idL}";
+    }
+
+    @PostMapping("/listaFiltrar")
+    public String listaFiltrar(Model model, @RequestParam("clave") String clave){
+        List<Lista> listasCompradores;
+        listasCompradores = this.listaRepository.findByClave(clave);
+        model.addAttribute("listasComprador", listasCompradores);
+        return "listasComprador";
     }
 
 }

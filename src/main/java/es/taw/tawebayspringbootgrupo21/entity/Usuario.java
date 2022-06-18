@@ -108,7 +108,7 @@ public class Usuario {
     }
 
     @Basic
-    @Column(name = "ROL_ID", nullable = false, insertable = false, updatable = false)
+    @Column(name = "ROL_ID", nullable = false)
     public Integer getRolId() {
         return rolId;
     }
