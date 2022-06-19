@@ -28,6 +28,7 @@ public class Usuario {
     private Collection<UsuarioHasLista> usuarioHasListasByUserId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID", nullable = false)
     public Integer getUserId() {
         return userId;
