@@ -2,7 +2,6 @@ package es.taw.tawebayspringbootgrupo21.controller;
 
 import es.taw.tawebayspringbootgrupo21.dao.CategoriaRepository;
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
-import es.taw.tawebayspringbootgrupo21.dto.UserDTO;
 import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
 import es.taw.tawebayspringbootgrupo21.entity.Categoria;
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
