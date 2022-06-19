@@ -1,9 +1,10 @@
-package es.taw.tawebayspringbootgrupo21.comtroller;
+package es.taw.tawebayspringbootgrupo21.controller;
 
 import es.taw.tawebayspringbootgrupo21.dao.ProductoRepository;
 import es.taw.tawebayspringbootgrupo21.dao.PujaRepository;
 import es.taw.tawebayspringbootgrupo21.dao.RolRepository;
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
+import es.taw.tawebayspringbootgrupo21.dto.UserDTO;
 import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
 import es.taw.tawebayspringbootgrupo21.entity.Producto;
 import es.taw.tawebayspringbootgrupo21.entity.Puja;
@@ -47,7 +48,7 @@ public class RegistrationController {
     }
 
     @GetMapping("/save")
-    public String registration(HttpSession session, Model model, @ModelAttribute("usuario_new") UsuarioDTO usuario)
+    public String registration(HttpSession session, Model model, @ModelAttribute("usuario_new") UserDTO usuario)
     {
         Integer rolid = 1;
         Rol rol = this.rr.findRolById(rolid);
@@ -72,7 +73,7 @@ public class RegistrationController {
         return "welcome";
     }
     @GetMapping("/edit/{userid}/{productId}")
-    public String edit(Model model, @PathVariable("userid") Integer userid, @PathVariable("productId") Integer productId, @RequestParam("puja") BigDecimal puja)
+    public String edit(HttpSession session, Model model, @PathVariable("userid") Integer userid, @PathVariable("productId") Integer productId, @RequestParam("puja") BigDecimal puja)
     {
         Usuario user = this.usuarioRepository.findByUserId(userid);
         model.addAttribute("usuario", user);
@@ -93,6 +94,7 @@ public class RegistrationController {
         producto.setPrecio(puja);
 
         this.pr.save(producto);
+        session.setAttribute("usuario", user);
 
         return "redirect:/listaProducto/"+userid+"";
 
