@@ -15,10 +15,33 @@
     if (error == null) {
         error = "";
     }
+
+    String sel = "";
+    String frm = "";
+    String whr = "";
+
     String stqr = (String) request.getAttribute("query");
-    if (stqr == null) {
-        stqr = "";
+
+    if(stqr != null) {
+        //disassemble the query
+        String[] spq = stqr.split("SELECT|FROM|WHERE");
+
+        if(spq.length>1) {
+            sel = spq[1];
+            frm = spq[2];
+        }
+        if(spq.length>3) {
+            whr = spq[3];
+        }
     }
+
+
+    String in = (String) request.getAttribute("in");
+    if (in == null) {
+        in = "";
+    }
+
+
 %>
 <body>
 <jsp:include page="cabecera.jsp" />
@@ -28,8 +51,11 @@
 
 
 <form method="POST" action="/analista/checkstudio">
-    Query: <input name="query" type="text" value="<%= stqr%>">
-    <input type="submit" value="Enviar">
+    SELECT: <input name="select" type="text" value="<%= sel%>"> <br>
+    FROM: <input name="from" type="text" value="<%= frm%>"> <br>
+    WHERE: <input name="where" type="text" value="<%= whr+in%>"> <br>
+    <input type="submit" name="submit" value="Enviar">
+    <input type="submit" name="in" value="Meter en IN">
 </form>
 
 <%= error%>

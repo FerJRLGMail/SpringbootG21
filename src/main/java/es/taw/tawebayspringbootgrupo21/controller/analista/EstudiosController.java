@@ -45,8 +45,8 @@ public class EstudiosController {
 
     @GetMapping("/")
     public String init (Model model, HttpSession session) {
-        //UsuarioDTO u = us.findUsuarioByUserId(2);
-        //session.setAttribute("usuario", u);
+        UsuarioDTO u = us.findUsuarioByUserId(2);
+        session.setAttribute("usuario", u);
 
         return "redirect:/analista/estudios";
     }
@@ -68,13 +68,38 @@ public class EstudiosController {
     public String nuevoEstudio (Model model, @PathVariable("query") String query, HttpSession session) {
         model.addAttribute("query", query);
 
-        return "nuevoestudio1";
+        return "nuevoestudio";
     }
 
-    @PostMapping("/checkstudio")
-    public String checkstudio (Model model, @RequestParam("query") String query, HttpSession session, HttpServletRequest request) {
+    public String buildquery(String select, String from, String where) {
+        String respuesta = "SELECT " + select + " FROM " + from;
+        if(where != null && where != "")
+            respuesta = respuesta  + " WHERE " + where;
 
-        String clonquery = request.getParameter("query");
+        return respuesta;
+    }
+
+    @PostMapping(value = "/checkstudio", params="in")
+    public String meterEnIn(Model model, HttpSession session,
+                            @RequestParam("select") String select,
+                            @RequestParam("from") String from,
+                            @RequestParam("where") String where) {
+        String in = buildquery(select, from, where);
+
+        in = "IN (" + in +")";
+
+        model.addAttribute("in", in);
+
+        return "nuevoestudio";
+    }
+
+    @PostMapping(value = "/checkstudio", params="submit")
+    public String checkstudio (Model model, HttpSession session,
+                               @RequestParam("select") String select,
+                               @RequestParam("from") String from,
+                               @RequestParam("where") String where) {
+
+        String query = buildquery(select, from, where);
 
         String respuesta = this.es.CheckQuery(query);
 
@@ -92,7 +117,7 @@ public class EstudiosController {
             model.addAttribute("query", query);
             model.addAttribute("error", respuesta);
 
-            return "nuevoestudio1";
+            return "nuevoestudio";
         }
 
     }
@@ -119,7 +144,7 @@ public class EstudiosController {
         model.addAttribute("estudio", e);
         model.addAttribute("datos", datos);
 
-        return "nuevoestudio2";
+        return "estudio";
     }
 
     @PostMapping("updatestudio")

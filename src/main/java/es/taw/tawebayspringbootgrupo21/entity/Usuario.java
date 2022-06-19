@@ -221,6 +221,7 @@ public class Usuario {
         udto.setApellido(this.getApellido());
         udto.setEmail(this.getEmail());
         udto.setDireccion(this.getDireccion());
+        udto.setUserId(this.getUserId());
         udto.setRolId(this.getRolByRolId().getRolId());
         udto.setRolByRolId(this.getRolByRolId());
         return udto;
