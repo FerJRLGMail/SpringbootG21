@@ -1,7 +1,7 @@
 package es.taw.tawebayspringbootgrupo21.service;
 
 
-import es.taw.tawebayspringbootgrupo21.dao.analista.UsuarioRepository;
+import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
 import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;

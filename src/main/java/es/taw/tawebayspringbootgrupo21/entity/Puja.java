@@ -26,7 +26,7 @@ public class Puja {
     }
 
     @Basic
-    @Column(name = "COMPRADOR_ID", nullable = true, insertable = false, updatable = false)
+    @Column(name = "COMPRADOR_ID", nullable = true)
     public Integer getCompradorId() {
         return compradorId;
     }
@@ -36,7 +36,7 @@ public class Puja {
     }
 
     @Basic
-    @Column(name = "PRODUCT_ID", nullable = true, insertable = false, updatable = false)
+    @Column(name = "PRODUCT_ID", nullable = true)
     public Integer getProductId() {
         return productId;
     }

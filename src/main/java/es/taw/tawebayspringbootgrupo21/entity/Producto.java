@@ -33,7 +33,7 @@ public class Producto {
     }
 
     @Basic
-    @Column(name = "CAT_ID", nullable = true, insertable = false, updatable = false)
+    @Column(name = "CAT_ID", nullable = true)
     public Integer getCatId() {
         return catId;
     }
@@ -43,7 +43,7 @@ public class Producto {
     }
 
     @Basic
-    @Column(name = "VENDEDOR_ID", nullable = true, insertable = false, updatable = false)
+    @Column(name = "VENDEDOR_ID", nullable = true)
     public Integer getVendedorId() {
         return vendedorId;
     }

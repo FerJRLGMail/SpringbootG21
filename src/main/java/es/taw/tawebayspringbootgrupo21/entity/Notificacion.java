@@ -25,7 +25,7 @@ public class Notificacion {
     }
 
     @Basic
-    @Column(name = "RECEPTOR", nullable = true, insertable = false, updatable = false)
+    @Column(name = "RECEPTOR", nullable = true)
     public Integer getReceptor() {
         return receptor;
     }
@@ -35,7 +35,7 @@ public class Notificacion {
     }
 
     @Basic
-    @Column(name = "MENSAJERO", nullable = true, insertable = false, updatable = false)
+    @Column(name = "MENSAJERO", nullable = true)
     public Integer getMensajero() {
         return mensajero;
     }

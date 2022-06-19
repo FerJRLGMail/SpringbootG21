@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <%
-    UsuarioDTO usuario = (UsuarioDTO) session.getAttribute("usuario");
+    Usuario usuario = (Usuario) session.getAttribute("usuario");
 %>
 <head>
 </head>

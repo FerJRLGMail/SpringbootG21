@@ -1,6 +1,6 @@
-package es.taw.tawebayspringbootgrupo21.controller;
+package es.taw.tawebayspringbootgrupo21.controller.marketing;
 
-import es.taw.tawebayspringbootgrupo21.dao.analista.UsuarioRepository;
+import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,7 +44,7 @@ public class LoginController {
                     break;
                 case 2:
                     //analista
-                    goTo = "" + user.getUserId();
+                    goTo = "";
                     break;
                 case 5:
                     //Marketing
