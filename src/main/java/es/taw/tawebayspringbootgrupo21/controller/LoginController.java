@@ -1,4 +1,4 @@
-package es.taw.tawebayspringbootgrupo21.controller.marketing;
+package es.taw.tawebayspringbootgrupo21.controller;
 
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
