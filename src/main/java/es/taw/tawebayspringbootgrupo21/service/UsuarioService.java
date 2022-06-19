@@ -1,17 +1,23 @@
 package es.taw.tawebayspringbootgrupo21.service;
 
 
+import es.taw.tawebayspringbootgrupo21.dao.RolRepository;
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
 import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
+import es.taw.tawebayspringbootgrupo21.entity.Rol;
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+//Autores: Cecilia (setNewUsuario), Fernando Jesús (resto)
 
 @Service
 public class UsuarioService {
 
 
     private UsuarioRepository ur;
+
+    private RolRepository rr;
 
     @Autowired
     public void setUr(UsuarioRepository ur) {
