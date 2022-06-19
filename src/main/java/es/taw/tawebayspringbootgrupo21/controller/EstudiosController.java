@@ -82,7 +82,7 @@ public class EstudiosController {
             //crear estudio
 
             UsuarioDTO usuario = (UsuarioDTO)session.getAttribute("usuario");
-            Integer stdId = es.crearEstudio(usuario.getId(), "", query, "");
+            Integer stdId = es.crearEstudio(usuario.getUserId(), "", query, "");
 
             EstudiosDTO e = es.FindById(stdId);
 
