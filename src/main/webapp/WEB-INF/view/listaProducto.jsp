@@ -34,7 +34,7 @@
 </head>
 <body>
 
-<jsp:include page="/WEB-INF/view/cabecera.jsp" />
+<jsp:include page="cabecera.jsp" />
 
 <h1>Productos</h1>
 
