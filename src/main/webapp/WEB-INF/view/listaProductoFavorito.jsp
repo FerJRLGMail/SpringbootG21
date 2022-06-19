@@ -31,7 +31,7 @@
     %>
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/cabecera.jsp" />
+<jsp:include page="cabecera.jsp" />
 <h1>Lista Producto Favoritos:</h1>
 <h2><a href="/back/<%=user.getUserId()%>">Back</a></h2></br>
 <%
