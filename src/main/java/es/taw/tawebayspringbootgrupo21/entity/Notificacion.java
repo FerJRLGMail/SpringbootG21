@@ -1,5 +1,7 @@
 package es.taw.tawebayspringbootgrupo21.entity;
 
+import es.taw.tawebayspringbootgrupo21.dto.NotificacionDTO;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
@@ -15,6 +17,7 @@ public class Notificacion {
     private Usuario usuarioByMensajero;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NOTIFICACION_ID", nullable = false)
     public Integer getNotificacionId() {
         return notificacionId;
@@ -95,5 +98,18 @@ public class Notificacion {
 
     public void setUsuarioByMensajero(Usuario usuarioByMensajero) {
         this.usuarioByMensajero = usuarioByMensajero;
+    }
+
+    @Transient
+    public NotificacionDTO toDTO() {
+        NotificacionDTO ndto = new NotificacionDTO();
+        ndto.setFecha(this.getFecha());
+        ndto.setMensajero(this.getMensajero());
+        ndto.setMensaje(this.getMensaje());
+        ndto.setReceptor(this.getReceptor());
+        ndto.setNotificacionId(this.getNotificacionId());
+        ndto.setUsuarioByMensajero(this.getUsuarioByMensajero());
+        ndto.setUsuarioByReceptor(this.getUsuarioByReceptor());
+        return ndto;
     }
 }

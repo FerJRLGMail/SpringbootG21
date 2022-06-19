@@ -1,6 +1,8 @@
-<%@ page import="es.taw.tawebayspringbootgrupo21.entity.Notificacion" %>
-<%@ page import="es.taw.tawebayspringbootgrupo21.entity.Usuario" %>
-<%@ page import="java.util.List" %><%--
+
+<%@ page import="java.util.List" %>
+<%@ page import="es.taw.tawebayspringbootgrupo21.dto.NotificacionDTO" %>
+<%@ page import="es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO" %>
+<%@ page import="es.taw.tawebayspringbootgrupo21.entity.Usuario" %><%--
   Created by IntelliJ IDEA.
   User: zhang
   Date: 18/06/2022
@@ -17,8 +19,8 @@
 <jsp:include page="cabecera.jsp" />
 
 <%
-    List<Notificacion> notificaciones = (List) request.getAttribute("notificaciones");
-    Usuario usuario = (Usuario) request.getAttribute("comprador");
+    List<NotificacionDTO> notificaciones = (List<NotificacionDTO>) request.getAttribute("notificaciones");
+    UsuarioDTO usuario = (UsuarioDTO) request.getAttribute("comprador");
 %>
 <%
 Usuario u = (Usuario) session.getAttribute("usuario");
@@ -42,7 +44,7 @@ if(u.getRolId() == 5){
         <th>Fecha</th>
     </tr>
     <%
-        for (Notificacion notificacion : notificaciones) {
+        for (NotificacionDTO notificacion : notificaciones) {
     %>
     <tr>
         <td><%= notificacion.getMensaje()%></td>

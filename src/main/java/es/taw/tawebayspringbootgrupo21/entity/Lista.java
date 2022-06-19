@@ -1,5 +1,8 @@
 package es.taw.tawebayspringbootgrupo21.entity;
 
+import es.taw.tawebayspringbootgrupo21.dto.ListaDTO;
+import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -64,5 +67,14 @@ public class Lista {
 
     public void setUsuarioHasListasByListaId(Collection<UsuarioHasLista> usuarioHasListasByListaId) {
         this.usuarioHasListasByListaId = usuarioHasListasByListaId;
+    }
+
+    @Transient
+    public ListaDTO toDTO() {
+        ListaDTO ldto = new ListaDTO();
+        ldto.setListaId(this.getListaId());
+        ldto.setNombre(this.getNombre());
+        ldto.setUsuarioHasListasByListaId(this.getUsuarioHasListasByListaId());
+        return ldto;
     }
 }

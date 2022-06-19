@@ -1,11 +1,13 @@
 package es.taw.tawebayspringbootgrupo21.controller.marketing;
+/*
+Created by IntelliJ IDEA.
+        User: zhang
+        Date: 11/06/2022
+ */
 
-import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
-import es.taw.tawebayspringbootgrupo21.dao.marketing.ListaRepository;
-import es.taw.tawebayspringbootgrupo21.dao.marketing.UsuarioHasListaRepository;
-import es.taw.tawebayspringbootgrupo21.entity.Lista;
-import es.taw.tawebayspringbootgrupo21.entity.Usuario;
-import es.taw.tawebayspringbootgrupo21.entity.UsuarioHasLista;
+import es.taw.tawebayspringbootgrupo21.dto.ListaDTO;
+import es.taw.tawebayspringbootgrupo21.service.UsuarioService;
+import es.taw.tawebayspringbootgrupo21.service.markrting.ListaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,98 +16,59 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class ListasCompradorController {
 
-    private ListaRepository listaRepository;
-    private UsuarioRepository usuarioRepository;
-    private UsuarioHasListaRepository usuarioHasListaRepository;
+    private ListaService listaService;
+    private UsuarioService usuarioService;
 
-    public UsuarioRepository getUsuarioRepository(){
-        return  usuarioRepository;
+    public UsuarioService getUsuarioService() {
+        return usuarioService;
     }
-    public ListaRepository getListaRepository(){
-        return listaRepository;
-    }
-    public UsuarioHasListaRepository getUsuarioHasListaRepository() {
-        return usuarioHasListaRepository;
+
+    public ListaService getListaService() {
+        return listaService;
     }
 
     @Autowired
-    public void setUsuarioRepository(UsuarioRepository usuarioRepository){
-        this.usuarioRepository=usuarioRepository;
+    public void setUsuarioService(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
     }
 
     @Autowired
-    public void setListaRepository(ListaRepository listaRepository){
-        this.listaRepository=listaRepository;
-    }
-
-    @Autowired
-    public void setUsuarioHasListaRepository(UsuarioHasListaRepository usuarioHasListaRepository){
-        this.usuarioHasListaRepository=usuarioHasListaRepository;
+    public void setListaService(ListaService listaService) {
+        this.listaService = listaService;
     }
 
     @GetMapping("/listasComprador")
-    public String doListarCompradores(Model model){
-        List<Lista> listasCompradores = this.listaRepository.findAll();
-        model.addAttribute("listasComprador", listasCompradores);
+    public String doListarCompradores(Model model) {
+        List<ListaDTO> listas = this.listaService.findAll();
+        model.addAttribute("listasComprador", listas);
         return "listasComprador";
     }
 
     @PostMapping("/AddyEditLista")
-    public String addListaComprador(Model model, HttpSession session,@RequestParam("id") String id, @RequestParam("nombre") String nombre){
-        Lista lista;
-        if(id.length() == 0){
-            lista = new Lista(nombre);
-        }else{
-            lista = this.listaRepository.findByListaId(Integer.parseInt(id));
-            if(lista != null){
-                lista.setNombre(nombre);
-            }
-        }
-        this.listaRepository.save(lista);
+    public String addListaComprador(@RequestParam("id") String id, @RequestParam("nombre") String nombre) {
+        this.listaService.addListaComprador(id, nombre);
         return "redirect:/listasComprador";
     }
 
     @GetMapping("/deleteLista/{idL}")
-    public String deleteLista(@PathVariable("idL") Integer idL){
-        Lista l = this.listaRepository.findByListaId(idL);
-        List<UsuarioHasLista> usuarioHasListas = this.usuarioHasListaRepository.findByListaId(idL);
-        for (UsuarioHasLista u: usuarioHasListas) {
-            this.usuarioHasListaRepository.delete(u);
-        }
-        this.listaRepository.deleteById(idL);
+    public String deleteLista(@PathVariable("idL") Integer idL) {
+        this.listaService.deleteLista(idL);
         return "redirect:/listasComprador";
     }
 
     @GetMapping("/verLista/{idL}")
-    public String verLista(Model model, HttpSession session, @PathVariable("idL") Integer idL){
-        Lista lista = this.listaRepository.findByListaId(idL);
-
-        List<Integer> idsL = new ArrayList<>();
-        for (UsuarioHasLista u : lista.getUsuarioHasListasByListaId()) {
-            idsL.add(u.getUserId());
-        }
-        List<Usuario> compradoresDisponibles;
-        if(idsL.isEmpty()){
-            compradoresDisponibles=this.usuarioRepository.findByGetCompradores();
-        }else{
-            compradoresDisponibles = this.usuarioRepository.fingByRolIdgetCompradoresDisponibles(idsL);
-        }
-
-        model.addAttribute("lista", lista);
-        model.addAttribute("compradoresDisponibles", compradoresDisponibles);
-
+    public String verLista(Model model, @PathVariable("idL") Integer idL) {
+        this.listaService.verLista(model, idL);
         return "compradoresDeLista";
     }
 
     @PostMapping("/Reset")
-    public String resetFiltrar(){
+    public String resetFiltrar() {
         return "redirect:/listasComprador";
     }
 }

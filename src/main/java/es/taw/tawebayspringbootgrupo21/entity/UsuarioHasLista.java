@@ -75,4 +75,5 @@ public class UsuarioHasLista {
     public void setListaByListaId(Lista listaByListaId) {
         this.listaByListaId = listaByListaId;
     }
+
 }

@@ -1,4 +1,4 @@
-package es.taw.tawebayspringbootgrupo21.service;
+package es.taw.tawebayspringbootgrupo21.service.analista;
 
 
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
@@ -43,7 +43,7 @@ public class EstudiosService {
     }
 
     public List<EstudiosDTO> FindByUserId(UsuarioDTO udto) {
-        Usuario u = ur.findByUserId(udto.getId());
+        Usuario u = ur.findByUserId(udto.getUserId());
 
         return this.listaEntityADTO(this.er.findEstudiosByUsuarioByAnalistaId(u));
     }

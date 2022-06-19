@@ -1,5 +1,9 @@
 package es.taw.tawebayspringbootgrupo21.dao.marketing;
-
+/*
+Created by IntelliJ IDEA.
+        User: zhang
+        Date: 11/06/2022
+ */
 import es.taw.tawebayspringbootgrupo21.entity.UsuarioHasLista;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

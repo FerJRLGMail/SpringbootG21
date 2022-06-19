@@ -213,11 +213,12 @@ public class Usuario {
         this.usuarioHasListasByUserId = usuarioHasListasByUserId;
     }
 
+    @Transient
     public UsuarioDTO toDTO() {
         UsuarioDTO udto = new UsuarioDTO();
         udto.setApellido(this.getApellido());
         udto.setNombre(this.getNombre());
-        udto.setId(this.getUserId());
+        udto.setUserId(this.getUserId());
         udto.setRolId(this.getRolByRolId().getRolId());
         return udto;
     }

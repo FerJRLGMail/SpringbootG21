@@ -1,4 +1,5 @@
-<%@ page import="es.taw.tawebayspringbootgrupo21.entity.Lista" %><%--
+<%@ page import="es.taw.tawebayspringbootgrupo21.entity.Lista" %>
+<%@ page import="es.taw.tawebayspringbootgrupo21.dto.ListaDTO" %><%--
   Created by IntelliJ IDEA.
   User: zhang
   Date: 16/06/2022
@@ -10,7 +11,7 @@
 <html>
 <%
 
-  Lista lista = (Lista) request.getAttribute("lista");
+  ListaDTO lista = (ListaDTO) request.getAttribute("lista");
 %>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

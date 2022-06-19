@@ -1,5 +1,9 @@
 package es.taw.tawebayspringbootgrupo21.controller.marketing;
-
+/*
+Created by IntelliJ IDEA.
+        User: zhang
+        Date: 11/06/2022
+ */
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
 import es.taw.tawebayspringbootgrupo21.dao.marketing.ListaRepository;
 import es.taw.tawebayspringbootgrupo21.dao.marketing.NotificacionRepository;
@@ -7,6 +11,9 @@ import es.taw.tawebayspringbootgrupo21.entity.Lista;
 import es.taw.tawebayspringbootgrupo21.entity.Notificacion;
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
 import es.taw.tawebayspringbootgrupo21.entity.UsuarioHasLista;
+import es.taw.tawebayspringbootgrupo21.service.UsuarioService;
+import es.taw.tawebayspringbootgrupo21.service.markrting.ListaService;
+import es.taw.tawebayspringbootgrupo21.service.markrting.NotificacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,57 +30,41 @@ import java.util.List;
 
 @Controller
 public class NotificacionController {
-    private UsuarioRepository usuarioRepository;
-    private ListaRepository listaRepository;
-    private NotificacionRepository notificacionRepository;
+    private ListaService listaService;
+    private UsuarioService usuarioService;
+    private NotificacionService notificacionService;
 
-    public UsuarioRepository getUsuarioRepository(){ return usuarioRepository;}
-    public ListaRepository getListaRepository(){ return listaRepository;}
-    public NotificacionRepository getNodificacionRepository() { return notificacionRepository;}
+    public UsuarioService getUsuarioService(){
+        return  usuarioService;
+    }
+    public ListaService getListaService(){
+        return listaService;
+    }
+    public NotificacionService getNotificacionService() { return notificacionService;}
 
     @Autowired
-    public void setUsuarioRepository(UsuarioRepository usuarioRepository){
-        this.usuarioRepository=usuarioRepository;
+    public void setUsuarioService(UsuarioService usuarioService){
+        this.usuarioService=usuarioService;
     }
     @Autowired
-    public void setListaRepository(ListaRepository listaRepository){
-        this.listaRepository=listaRepository;
+    public void setListaService(ListaService listaService){
+        this.listaService=listaService;
     }
     @Autowired
-    public void setNodificacionRepository(NotificacionRepository notificacionRepository){
-        this.notificacionRepository = notificacionRepository;
+    public void setNotificacionService(NotificacionService notificacionService){
+        this.notificacionService = notificacionService;
     }
 
     @PostMapping("/notificar")
     public String notificar(HttpSession session, @RequestParam("idLista") Integer idLista, @RequestParam("notificacion") String notificacion){
         Usuario marketingUsuario = (Usuario) session.getAttribute("usuario");
-
-        if (idLista != null && notificacion != null && marketingUsuario.getRolId() == 5) {
-            Lista l = this.listaRepository.findByListaId(idLista);
-
-            for (UsuarioHasLista usuario : l.getUsuarioHasListasByListaId()) {
-                Notificacion n = new Notificacion();
-                n.setFecha(new Date(Calendar.getInstance().getTime().getTime()));
-                n.setMensaje(notificacion);
-                n.setReceptor(usuario.getUserId());
-                n.setMensajero(marketingUsuario.getUserId());
-                this.notificacionRepository.save(n);
-            }
-        }
+        this.notificacionService.notificar(marketingUsuario, idLista,notificacion);
         return "redirect:/verLista/"+idLista;
     }
 
     @GetMapping("/verMensajes/{idU}")
     public String verMensajes(Model model, @PathVariable("idU") Integer idU){
-        List<Notificacion> notificaciones = new ArrayList<>();
-        Usuario comprador=new Usuario();
-
-        if(idU != null){
-            notificaciones = this.notificacionRepository.findAllNotificacionesByUserId(idU);
-            comprador = this.usuarioRepository.findByUserId(idU);
-        }
-        model.addAttribute("notificaciones", notificaciones);
-        model.addAttribute("comprador", comprador);
+        this.notificacionService.verMensajes(model, idU);
         return "verMensaje";
     }
 }

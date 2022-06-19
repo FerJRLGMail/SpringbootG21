@@ -1,9 +1,9 @@
-package es.taw.tawebayspringbootgrupo21.controller;
+package es.taw.tawebayspringbootgrupo21.controller.analista;
 
 
 import es.taw.tawebayspringbootgrupo21.dto.EstudiosDTO;
 import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
-import es.taw.tawebayspringbootgrupo21.service.EstudiosService;
+import es.taw.tawebayspringbootgrupo21.service.analista.EstudiosService;
 import es.taw.tawebayspringbootgrupo21.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -82,7 +82,7 @@ public class EstudiosController {
             //crear estudio
 
             UsuarioDTO usuario = (UsuarioDTO)session.getAttribute("usuario");
-            Integer stdId = es.crearEstudio(usuario.getId(), "", query, "");
+            Integer stdId = es.crearEstudio(usuario.getUserId(), "", query, "");
 
             EstudiosDTO e = es.FindById(stdId);
 

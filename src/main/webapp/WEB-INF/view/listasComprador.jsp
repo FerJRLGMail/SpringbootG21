@@ -5,7 +5,7 @@
   Time: 11:31
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="es.taw.tawebayspringbootgrupo21.entity.Lista" %>
+<%@ page import="es.taw.tawebayspringbootgrupo21.dto.ListaDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -18,8 +18,8 @@
 <jsp:include page="cabecera.jsp" />
 <h1>Listas de compradores</h1>
 <%
-    List<Lista> listasComprador = (List) request.getAttribute("listasComprador");
-    if (listasComprador == null || listasComprador.isEmpty()) {
+    List<ListaDTO> listasCompradors = (List<ListaDTO>) request.getAttribute("listasComprador");
+    if (listasCompradors == null || listasCompradors.isEmpty()) {
 %>
 <h2>No hay niuguna lista</h2>
 <%
@@ -42,7 +42,7 @@
         <th></th>
     </tr>
     <%
-        for (Lista lista : listasComprador) {
+        for (ListaDTO lista : listasCompradors) {
     %>
 
     <tr>

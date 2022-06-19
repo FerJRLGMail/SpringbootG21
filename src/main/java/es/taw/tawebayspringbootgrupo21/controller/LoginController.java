@@ -1,8 +1,11 @@
 package es.taw.tawebayspringbootgrupo21.controller;
-
-import es.taw.tawebayspringbootgrupo21.dao.CategoriaRepository;
+/*
+Created by IntelliJ IDEA.
+        User: zhang 70%, Fernando 15%, Cecilia 15%
+        Date: 11/06/2022
+ */
+import es.taw.tawebayspringbootgrupo21.dao.comprador.CategoriaRepository;
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
-import es.taw.tawebayspringbootgrupo21.dto.UserDTO;
 import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
 import es.taw.tawebayspringbootgrupo21.entity.Categoria;
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
@@ -51,7 +54,7 @@ public class LoginController {
             List<Categoria> categorias = this.categoriaRepository.findAll();
             model.addAttribute("categorias", categorias);
 
-            UserDTO usuario_new = new UserDTO();
+            UsuarioDTO usuario_new = new UsuarioDTO();
             model.addAttribute("usuario_new", usuario_new);
 
             goTo = "registration";

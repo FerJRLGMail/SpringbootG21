@@ -1,5 +1,9 @@
 package es.taw.tawebayspringbootgrupo21.dao;
-
+/*
+Created by IntelliJ IDEA.
+        User: zhang 80%, Fernando 20%
+        Date: 11/06/2022
+ */
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
