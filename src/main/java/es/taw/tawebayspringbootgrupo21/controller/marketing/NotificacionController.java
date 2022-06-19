@@ -4,6 +4,7 @@ Created by IntelliJ IDEA.
         User: zhang
         Date: 11/06/2022
  */
+
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
 import es.taw.tawebayspringbootgrupo21.dao.marketing.ListaRepository;
 import es.taw.tawebayspringbootgrupo21.dao.marketing.NotificacionRepository;
@@ -34,37 +35,44 @@ public class NotificacionController {
     private UsuarioService usuarioService;
     private NotificacionService notificacionService;
 
-    public UsuarioService getUsuarioService(){
-        return  usuarioService;
+    public UsuarioService getUsuarioService() {
+        return usuarioService;
     }
-    public ListaService getListaService(){
+
+    public ListaService getListaService() {
         return listaService;
     }
-    public NotificacionService getNotificacionService() { return notificacionService;}
+
+    public NotificacionService getNotificacionService() {
+        return notificacionService;
+    }
 
     @Autowired
-    public void setUsuarioService(UsuarioService usuarioService){
-        this.usuarioService=usuarioService;
+    public void setUsuarioService(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
     }
+
     @Autowired
-    public void setListaService(ListaService listaService){
-        this.listaService=listaService;
+    public void setListaService(ListaService listaService) {
+        this.listaService = listaService;
     }
+
     @Autowired
-    public void setNotificacionService(NotificacionService notificacionService){
+    public void setNotificacionService(NotificacionService notificacionService) {
         this.notificacionService = notificacionService;
     }
 
     @PostMapping("/notificar")
-    public String notificar(HttpSession session, @RequestParam("idLista") Integer idLista, @RequestParam("notificacion") String notificacion){
+    public String notificar(HttpSession session, @RequestParam("idLista") Integer idLista, @RequestParam("notificacion") String notificacion) {
         Usuario marketingUsuario = (Usuario) session.getAttribute("usuario");
-        this.notificacionService.notificar(marketingUsuario, idLista,notificacion);
-        return "redirect:/verLista/"+idLista;
+        this.notificacionService.notificar(marketingUsuario, idLista, notificacion);
+        return "redirect:/verLista/" + idLista;
     }
 
     @GetMapping("/verMensajes/{idU}")
-    public String verMensajes(Model model, @PathVariable("idU") Integer idU){
+    public String verMensajes(Model model, @PathVariable("idU") Integer idU) {
         this.notificacionService.verMensajes(model, idU);
+
         return "verMensaje";
     }
 }

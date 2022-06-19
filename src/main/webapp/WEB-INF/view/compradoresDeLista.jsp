@@ -1,7 +1,8 @@
 <%@ page import="es.taw.tawebayspringbootgrupo21.entity.Usuario" %>
 <%@ page import="java.util.List" %>
 <%@ page import="es.taw.tawebayspringbootgrupo21.entity.Lista" %>
-<%@ page import="es.taw.tawebayspringbootgrupo21.entity.UsuarioHasLista" %><%--
+<%@ page import="es.taw.tawebayspringbootgrupo21.entity.UsuarioHasLista" %>
+<%@ page import="es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO" %><%--
   Created by IntelliJ IDEA.
   User: zhang
   Date: 16/06/2022
@@ -21,7 +22,7 @@
 <h3> <a href="/listasComprador">Volver a listas </a></h3>
 <%
     Lista lista = (Lista) request.getAttribute("lista");
-    List<Usuario> compradoresDisponibles = (List) request.getAttribute("compradoresDisponibles");
+    List<UsuarioDTO> compradoresDisponibles = (List<UsuarioDTO>) request.getAttribute("compradoresDisponibles");
 %>
 <!-- Compradores que no estan en esta lista -->
 <h1>Compradores de la lista <%= lista.getNombre()%></h1>
@@ -67,7 +68,7 @@
             <th></th>
         </tr>
         <%
-            for (Usuario comprador : compradoresDisponibles) {
+            for (UsuarioDTO comprador : compradoresDisponibles) {
         %>
         <tr>
             <td><%= comprador.getNombre()%></td>

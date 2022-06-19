@@ -216,10 +216,13 @@ public class Usuario {
     @Transient
     public UsuarioDTO toDTO() {
         UsuarioDTO udto = new UsuarioDTO();
-        udto.setApellido(this.getApellido());
-        udto.setNombre(this.getNombre());
         udto.setUserId(this.getUserId());
+        udto.setNombre(this.getNombre());
+        udto.setApellido(this.getApellido());
+        udto.setEmail(this.getEmail());
+        udto.setDireccion(this.getDireccion());
         udto.setRolId(this.getRolByRolId().getRolId());
+        udto.setRolByRolId(this.getRolByRolId());
         return udto;
     }
 }

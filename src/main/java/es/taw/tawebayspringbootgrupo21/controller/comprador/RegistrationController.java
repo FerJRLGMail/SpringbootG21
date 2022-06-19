@@ -1,10 +1,9 @@
-package es.taw.tawebayspringbootgrupo21.controller;
+package es.taw.tawebayspringbootgrupo21.controller.comprador;
 
-import es.taw.tawebayspringbootgrupo21.dao.ProductoRepository;
-import es.taw.tawebayspringbootgrupo21.dao.PujaRepository;
-import es.taw.tawebayspringbootgrupo21.dao.RolRepository;
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
-import es.taw.tawebayspringbootgrupo21.dto.UserDTO;
+import es.taw.tawebayspringbootgrupo21.dao.comprador.ProductoRepository;
+import es.taw.tawebayspringbootgrupo21.dao.comprador.PujaRepository;
+import es.taw.tawebayspringbootgrupo21.dao.comprador.RolRepository;
 import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
 import es.taw.tawebayspringbootgrupo21.entity.Producto;
 import es.taw.tawebayspringbootgrupo21.entity.Puja;

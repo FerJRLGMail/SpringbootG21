@@ -2,7 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="es.taw.tawebayspringbootgrupo21.dto.NotificacionDTO" %>
 <%@ page import="es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO" %>
-<%@ page import="es.taw.tawebayspringbootgrupo21.entity.Usuario" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: zhang
   Date: 18/06/2022
@@ -23,10 +23,10 @@
     UsuarioDTO usuario = (UsuarioDTO) request.getAttribute("comprador");
 %>
 <%
-Usuario u = (Usuario) session.getAttribute("usuario");
+UsuarioDTO u = (UsuarioDTO) session.getAttribute("usuario");
 if(u.getRolId() == 5){
 %>
-<h3> <a href="/listasComprador">Volver a listas </a></h3>
+<h3> <a href="/listasComprador/">Volver </a></h3>
 <%
     }else if(u.getRolId() == 1){
 %>

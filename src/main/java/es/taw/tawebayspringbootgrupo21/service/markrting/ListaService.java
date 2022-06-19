@@ -9,6 +9,7 @@ import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
 import es.taw.tawebayspringbootgrupo21.dao.marketing.ListaRepository;
 import es.taw.tawebayspringbootgrupo21.dao.marketing.UsuarioHasListaRepository;
 import es.taw.tawebayspringbootgrupo21.dto.ListaDTO;
+import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
 import es.taw.tawebayspringbootgrupo21.entity.Lista;
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
 import es.taw.tawebayspringbootgrupo21.entity.UsuarioHasLista;
@@ -163,9 +164,14 @@ public class ListaService {
         }else{
             compradoresDisponibles = this.usuarioRepository.fingByRolIdgetCompradoresDisponibles(idsL);
         }
+        List<UsuarioDTO> luDTO = new ArrayList<>();
+
+        for (Usuario u :compradoresDisponibles) {
+            luDTO.add(u.toDTO());
+        }
 
         model.addAttribute("lista", lista);
-        model.addAttribute("compradoresDisponibles", compradoresDisponibles);
+        model.addAttribute("compradoresDisponibles", luDTO);
     }
     public List<ListaDTO> findAll() {
         List<Lista> listas = this.listaRepository.findAll();
