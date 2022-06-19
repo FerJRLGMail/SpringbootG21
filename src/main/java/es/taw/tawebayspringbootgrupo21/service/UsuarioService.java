@@ -22,9 +22,4 @@ public class UsuarioService {
         return ur.findByUserId(UserId).toDTO();
     }
 
-    public UsuarioDTO findSUSsuarioByUserId(Integer UserId) {
-        Usuario u = (Usuario) ur.findSUSsuarioByUserId(UserId);
-
-        return u.toDTO();
-    }
 }

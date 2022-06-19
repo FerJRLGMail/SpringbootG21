@@ -2,6 +2,7 @@ package es.taw.tawebayspringbootgrupo21.controller.marketing;
 
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
+import es.taw.tawebayspringbootgrupo21.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +16,17 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     private UsuarioRepository usuarioRepository;
 
+
+    private UsuarioService usuarioService;
+
     @Autowired
     public void setCustomerRepository(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
+    }
+
+    @Autowired
+    public void setUsuarioService(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
     }
 
     @GetMapping("/")
@@ -44,7 +53,7 @@ public class LoginController {
                     break;
                 case 2:
                     //analista
-                    goTo = "";
+                    goTo = "redirect:/analista/";
                     break;
                 case 5:
                     //Marketing

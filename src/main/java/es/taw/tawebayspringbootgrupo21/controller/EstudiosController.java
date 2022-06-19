@@ -45,9 +45,8 @@ public class EstudiosController {
 
     @GetMapping("/")
     public String init (Model model, HttpSession session) {
-        UsuarioDTO u = us.findUsuarioByUserId(2);
-        //UsuarioDTO u = es.findSUSsuarioByUserId(1);
-        session.setAttribute("usuario", u);
+        //UsuarioDTO u = us.findUsuarioByUserId(2);
+        //session.setAttribute("usuario", u);
 
         return "redirect:/analista/estudios";
     }

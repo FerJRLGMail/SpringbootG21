@@ -116,9 +116,4 @@ public class EstudiosService {
         er.delete(e);
     }
 
-    public UsuarioDTO findSUSsuarioByUserId(Integer UserId) {
-        Usuario u = (Usuario) ur.findSUSsuarioByUserId(UserId);
-
-        return u.toDTO();
-    }
 }
