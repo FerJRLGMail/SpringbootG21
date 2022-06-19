@@ -1,4 +1,5 @@
-<%@ page import="es.taw.tawebayspringbootgrupo21.entity.Usuario" %><%--
+<%@ page import="es.taw.tawebayspringbootgrupo21.entity.Usuario" %>
+<%@ page import="es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO" %><%--
   Created by IntelliJ IDEA.
   User: cecil
   Date: 18/06/2022
@@ -16,7 +17,7 @@
     </style>
     <title>Welcome</title>
     <%
-        Usuario usuario = (Usuario) request.getAttribute("usuario");
+        UsuarioDTO usuario = (UsuarioDTO) request.getAttribute("usuario");
     %>
 </head>
 <body>
