@@ -58,10 +58,10 @@ public class EstudiosService {
 
     }
 
-    private void rellenarEstudio (Estudios estudio, Usuario analistaId,
+    private void rellenarEstudio (Estudios estudio, Usuario analista,
                                   String nombre, String query, String titulos) {
 
-        estudio.setUsuarioByAnalistaId(analistaId);
+        estudio.setUsuarioByAnalistaId(analista);
         estudio.setNombre(nombre);
         estudio.setQuery(query);
         estudio.setTitulos(titulos);
@@ -109,6 +109,11 @@ public class EstudiosService {
 
     public List QueryOnDemand(String strq) {
         return er.QueryOnDemand(strq);
+    }
+
+    public void borrarEstudio (Integer id) {
+        Estudios e = er.findById(id).orElse(null);
+        er.delete(e);
     }
 
     public UsuarioDTO findSUSsuarioByUserId(Integer UserId) {

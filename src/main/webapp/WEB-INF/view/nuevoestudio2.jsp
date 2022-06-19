@@ -53,7 +53,7 @@ La consulta está vacía
 
 </table>
 
-<form method="POST" action="UpdateStudioServlet">
+<form method="POST" action="/analista/updatestudio">
     <input type="hidden" name="analistaid" value="<%= usuario.getId()%>">
     <input type="hidden" name="estudioid" value="<%= estudio.getEstudioId()%>">
     <input type="hidden" name="ntitulos" value="<%= ntitulos%>">

@@ -79,7 +79,7 @@ public class Estudios {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ANALISTA_ID", referencedColumnName = "USER_ID", insertable = false, updatable = false)
+    @JoinColumn(name = "ANALISTA_ID", referencedColumnName = "USER_ID")
     public Usuario getUsuarioByAnalistaId() {
         return usuarioByAnalistaId;
     }

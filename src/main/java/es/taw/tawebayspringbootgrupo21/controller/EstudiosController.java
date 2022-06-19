@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -72,7 +73,9 @@ public class EstudiosController {
     }
 
     @PostMapping("/checkstudio")
-    public String checkstudio (Model model, @RequestParam("query") String query, HttpSession session) {
+    public String checkstudio (Model model, @RequestParam("query") String query, HttpSession session, HttpServletRequest request) {
+
+        String clonquery = request.getParameter("query");
 
         String respuesta = this.es.CheckQuery(query);
 
@@ -82,7 +85,9 @@ public class EstudiosController {
             UsuarioDTO usuario = (UsuarioDTO)session.getAttribute("usuario");
             Integer stdId = es.crearEstudio(usuario.getId(), "", query, "");
 
+            EstudiosDTO e = es.FindById(stdId);
 
+            //return "redirect:/analista/estudios";
             return "redirect:/analista/"+ stdId +"/visualizar/";
         } else {
             model.addAttribute("query", query);
@@ -116,5 +121,41 @@ public class EstudiosController {
         model.addAttribute("datos", datos);
 
         return "nuevoestudio2";
+    }
+
+    @PostMapping("updatestudio")
+    public String updateStudio(Model model, HttpServletRequest request, HttpSession session,
+                               @RequestParam("ntitulos") Integer ntitulos,
+                               @RequestParam("estudioid") Integer estudioid,
+                               @RequestParam("nombre") String nombre) {
+        UsuarioDTO usuario = (UsuarioDTO)session.getAttribute("usuario");
+
+        EstudiosDTO estudio = this.es.FindById(estudioid);
+
+        String titulos = estudio.getTitulos();
+        if(ntitulos>0) {
+            titulos = "";
+            for(int i=0;i<ntitulos;i++) {
+                String titulo = request.getParameter("titulo" + (i+1));
+                if(titulo == null || titulo.equals("")) {
+                    titulos = titulos + "_;";
+                } else {
+                    titulos = titulos + titulo + ";";
+                }
+
+            }
+
+        }
+
+        es.modificarEstudio(estudioid, estudio.getAnalistaId(), nombre, estudio.getQuery(), titulos);
+
+        return "redirect:/analista/"+ estudioid +"/visualizar/";
+
+    }
+
+    @GetMapping("/{id}/delete")
+    public String doBorrar (@PathVariable("id") Integer stdId) {
+        this.es.borrarEstudio(stdId);
+        return "redirect:/analista/";
     }
 }

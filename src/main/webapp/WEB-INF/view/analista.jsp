@@ -36,9 +36,9 @@
     <tr>
         <td> <%= e.getNombre()%></td>
         <td> <%= e.getQuery()%></td>
-        <td> <a href="VisualizarEstudioServlet?estudioid=<%= e.getEstudioId()%>">Visualizar Estudio</a> </td>
+        <td> <a href="/analista/<%= e.getEstudioId()%>/visualizar">Visualizar Estudio</a> </td>
         <td> <a href="/analista/<%= e.getQuery()%>/nuevoestudio">Clonar Estudio</a></td>
-        <td> <a href="BorrarEstudioServlet?estudioid=<%= e.getEstudioId()%>">Borrar Estudio</a></td>
+        <td> <a href="/analista/<%= e.getEstudioId()%>/delete">Borrar Estudio</a></td>
     </tr>
 
 
