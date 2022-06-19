@@ -29,7 +29,7 @@ public class ListaProductoController {
     @GetMapping("/back/{userid}")
     public String back(Model model, @PathVariable("userid") Integer userid) {
         Usuario user = this.ur.findByUserId(userid);
-        model.addAttribute("usuario", user);
+        model.addAttribute("usuario", user.toDTO());
         return "welcome";
     }
 
