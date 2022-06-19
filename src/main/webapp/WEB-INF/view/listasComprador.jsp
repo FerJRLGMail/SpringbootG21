@@ -22,6 +22,9 @@
     if (listasCompradors == null || listasCompradors.isEmpty()) {
 %>
 <h2>No hay niuguna lista</h2>
+<form method="post" action="/Reset">
+    <input type="submit" value="Reset" />
+</form>
 <%
 } else {
 %>
