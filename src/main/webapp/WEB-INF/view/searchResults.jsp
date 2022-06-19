@@ -28,12 +28,14 @@
 <body>
 
 <h1>Search Results:</h1>
+
 <%
     String strError = (String) request.getAttribute("strError");
 
 
     Usuario user = (Usuario) request.getAttribute("user");
 %>
+<h2><a href="/back/<%=user.getUserId()%>">Back</a></h2></br>
 <%
     if(strError.equals(""))
     {
