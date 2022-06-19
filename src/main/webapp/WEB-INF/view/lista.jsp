@@ -18,7 +18,7 @@
   <title>Detalle de la lista <%= lista == null ? "" : lista.getNombre()%> </title>
 </head>
 <jsp:include page="cabecera.jsp" />
-<h3> <a href="listasComprador">Volver a listas </a></h3>
+<h3> <a href="/listasComprador">Volver a listas </a></h3>
 
 <body>
 <h1>Detalle de la lista <%= lista == null ? "" : lista.getNombre()%></h1>

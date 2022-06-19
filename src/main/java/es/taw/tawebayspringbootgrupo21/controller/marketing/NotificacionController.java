@@ -8,6 +8,7 @@ Created by IntelliJ IDEA.
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
 import es.taw.tawebayspringbootgrupo21.dao.marketing.ListaRepository;
 import es.taw.tawebayspringbootgrupo21.dao.marketing.NotificacionRepository;
+import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
 import es.taw.tawebayspringbootgrupo21.entity.Lista;
 import es.taw.tawebayspringbootgrupo21.entity.Notificacion;
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
@@ -64,7 +65,7 @@ public class NotificacionController {
 
     @PostMapping("/notificar")
     public String notificar(HttpSession session, @RequestParam("idLista") Integer idLista, @RequestParam("notificacion") String notificacion) {
-        Usuario marketingUsuario = (Usuario) session.getAttribute("usuario");
+        UsuarioDTO marketingUsuario = (UsuarioDTO) session.getAttribute("usuario");
         this.notificacionService.notificar(marketingUsuario, idLista, notificacion);
         return "redirect:/verLista/" + idLista;
     }
