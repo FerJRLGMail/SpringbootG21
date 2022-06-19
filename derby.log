@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sun Jun 19 10:00:13 CEST 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0181-7af9-fcb6-000002e5c860 
+Sun Jun 19 22:21:55 CEST 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0181-7da1-0bd8-000002df8758 
 on database directory C:\Users\ferna\Desktop\tawEbaySpringbootGrupo21\BDEbay with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/C:/Users/ferna/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
@@ -12,9 +12,9 @@ os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Sun Jun 19 10:01:15 CEST 2022:
-Shutting down instance a816c00e-0181-7af9-fcb6-000002e5c860 on database directory C:\Users\ferna\Desktop\tawEbaySpringbootGrupo21\BDEbay with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
-Sun Jun 19 10:01:16 CEST 2022 Thread[Thread-34,5,main] Cleanup action starting
+Sun Jun 19 22:25:02 CEST 2022:
+Shutting down instance a816c00e-0181-7da1-0bd8-000002df8758 on database directory C:\Users\ferna\Desktop\tawEbaySpringbootGrupo21\BDEbay with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Sun Jun 19 22:25:02 CEST 2022 Thread[Thread-34,5,main] Cleanup action starting
 ERROR XBM0I: Directory BDEbay cannot be removed.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
@@ -34,7 +34,7 @@ ERROR XBM0I: Directory BDEbay cannot be removed.
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
 Cleanup action completed
-Sun Jun 19 10:01:16 CEST 2022 Thread[Thread-34,5,main] Cleanup action starting
+Sun Jun 19 22:25:02 CEST 2022 Thread[Thread-34,5,main] Cleanup action starting
 ERROR XBM0I: Directory BDEbay cannot be removed.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
