@@ -54,7 +54,7 @@ La consulta está vacía
 </table>
 
 <form method="POST" action="/analista/updatestudio">
-    <input type="hidden" name="analistaid" value="<%= usuario.getId()%>">
+    <input type="hidden" name="analistaid" value="<%= usuario.getUserId()%>">
     <input type="hidden" name="estudioid" value="<%= estudio.getEstudioId()%>">
     <input type="hidden" name="ntitulos" value="<%= ntitulos%>">
     Nombre del estudio: <input type="text" size="30" name="nombre" value="<%= estudio.getNombre() == null ? "" : estudio.getNombre()%>" /> <br>
