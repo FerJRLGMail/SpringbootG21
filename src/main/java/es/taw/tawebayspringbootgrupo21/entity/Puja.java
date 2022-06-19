@@ -16,6 +16,7 @@ public class Puja {
     private Producto productoByProductId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PUJA_ID", nullable = false)
     public Integer getPujaId() {
         return pujaId;
@@ -36,7 +37,7 @@ public class Puja {
     }
 
     @Basic
-    @Column(name = "PRODUCT_ID", nullable = true)
+    @Column(name = "PRODUCT_ID", nullable = true, insertable = false, updatable = false)
     public Integer getProductId() {
         return productId;
     }
@@ -89,7 +90,7 @@ public class Puja {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID", insertable = false, updatable = false)
+    @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
     public Producto getProductoByProductId() {
         return productoByProductId;
     }
