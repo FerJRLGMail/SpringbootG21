@@ -48,7 +48,7 @@ public class RegistrationController {
     }
 
     @GetMapping("/save")
-    public String registration(HttpSession session, Model model, @ModelAttribute("usuario_new") UserDTO usuario)
+    public String registration(HttpSession session, Model model, @ModelAttribute("usuario_new") UsuarioDTO usuario)
     {
         Integer rolid = 1;
         Rol rol = this.rr.findRolById(rolid);
