@@ -20,11 +20,11 @@
     %>
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/cabecera.jsp" />
+<jsp:include page="cabecera.jsp" />
 <h1>Welcome, <%=usuario.getNombre()%> <%=usuario.getApellido()%></h1>
 <h2><a href="/listaProducto/<%=usuario.getUserId()%>">Lista producto</a></h2></br>
 <h2><a href="/listaproductoFavorito/<%=usuario.getUserId()%>">Producto Favoritos</a></h2></br>
 <h2><a href="/listaproductoComprado/<%=usuario.getUserId()%>">Producto Comprado</a></h2></br>
-<h2><a href="/mensajes/<%=usuario.getUserId()%>">Mensajes</a></h2></br>
+<h2><a href="/verMensajes/<%=usuario.getUserId()%>">Mensajes</a></h2></br>
 </body>
 </html>
