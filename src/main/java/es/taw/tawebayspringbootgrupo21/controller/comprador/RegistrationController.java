@@ -1,9 +1,10 @@
-package es.taw.tawebayspringbootgrupo21.controller.comprador;
+package es.taw.tawebayspringbootgrupo21.controller;
 
-import es.taw.tawebayspringbootgrupo21.dao.comprador.ProductoRepository;
-import es.taw.tawebayspringbootgrupo21.dao.comprador.PujaRepository;
-import es.taw.tawebayspringbootgrupo21.dao.comprador.RolRepository;
+import es.taw.tawebayspringbootgrupo21.dao.ProductoRepository;
+import es.taw.tawebayspringbootgrupo21.dao.PujaRepository;
+import es.taw.tawebayspringbootgrupo21.dao.RolRepository;
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
+import es.taw.tawebayspringbootgrupo21.dto.UserDTO;
 import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
 import es.taw.tawebayspringbootgrupo21.entity.Producto;
 import es.taw.tawebayspringbootgrupo21.entity.Puja;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
