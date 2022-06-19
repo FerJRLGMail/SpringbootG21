@@ -41,15 +41,20 @@ public class LoginController {
         Usuario user = this.usuarioRepository.findByEmail(email);
         session.setAttribute("usuario", user);
         if (user == null) {
-            model.addAttribute("error", "Usuario no existe. Por favor registrate");
-            goTo = "login";
+            List<Categoria> categorias = this.categoriaRepository.findAll();
+            model.addAttribute("categorias", categorias);
+
+            UsuarioDTO usuario_new = new UsuarioDTO();
+            model.addAttribute("usuario_new", usuario_new);
+
+            goTo = "registration";
         } else {
             model.addAttribute("usuario", user);
             //ver el rol de este usuario
             switch (user.getRolId()) {
                 case 1:
                     //comprador
-                    goTo="";
+                    goTo="welcome";
                     break;
                 case 2:
                     //analista
