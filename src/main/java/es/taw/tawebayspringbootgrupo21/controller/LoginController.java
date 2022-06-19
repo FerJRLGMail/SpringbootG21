@@ -51,7 +51,7 @@ public class LoginController {
             List<Categoria> categorias = this.categoriaRepository.findAll();
             model.addAttribute("categorias", categorias);
 
-            UserDTO usuario_new = new UserDTO();
+            UsuarioDTO usuario_new = new UsuarioDTO();
             model.addAttribute("usuario_new", usuario_new);
 
             goTo = "registration";
