@@ -1,4 +1,4 @@
-package es.taw.tawebayspringbootgrupo21.comtroller;
+package es.taw.tawebayspringbootgrupo21.controller;
 
 import es.taw.tawebayspringbootgrupo21.dao.ProdFavoritosRepository;
 import es.taw.tawebayspringbootgrupo21.dao.ProductoRepository;

@@ -16,11 +16,21 @@
 </head>
 <jsp:include page="cabecera.jsp" />
 
-<h3> <a href="/listasComprador">Volver a listas </a></h3>
-
 <%
     List<Notificacion> notificaciones = (List) request.getAttribute("notificaciones");
     Usuario usuario = (Usuario) request.getAttribute("comprador");
+%>
+<%
+Usuario u = (Usuario) session.getAttribute("usuario");
+if(u.getRolId() == 5){
+%>
+<h3> <a href="/listasComprador">Volver a listas </a></h3>
+<%
+    }else if(u.getRolId() == 1){
+%>
+<h3> <a href="/back/<%=usuario.getUserId()%>">Volver </a></h3>
+<%
+    }
 %>
 <body>
 <h1> Bandea de mensajes del comprador <%= usuario.getNombre()%> <%= usuario.getApellido()%> </h1>
