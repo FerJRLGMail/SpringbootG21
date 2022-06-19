@@ -1,6 +1,10 @@
 package es.taw.tawebayspringbootgrupo21.controller;
 
+import es.taw.tawebayspringbootgrupo21.dao.CategoriaRepository;
 import es.taw.tawebayspringbootgrupo21.dao.UsuarioRepository;
+import es.taw.tawebayspringbootgrupo21.dto.UserDTO;
+import es.taw.tawebayspringbootgrupo21.dto.UsuarioDTO;
+import es.taw.tawebayspringbootgrupo21.entity.Categoria;
 import es.taw.tawebayspringbootgrupo21.entity.Usuario;
 import es.taw.tawebayspringbootgrupo21.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -18,6 +23,8 @@ public class LoginController {
 
 
     private UsuarioService usuarioService;
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     @Autowired
     public void setCustomerRepository(UsuarioRepository usuarioRepository) {
@@ -44,7 +51,7 @@ public class LoginController {
             List<Categoria> categorias = this.categoriaRepository.findAll();
             model.addAttribute("categorias", categorias);
 
-            UsuarioDTO usuario_new = new UsuarioDTO();
+            UserDTO usuario_new = new UserDTO();
             model.addAttribute("usuario_new", usuario_new);
 
             goTo = "registration";
