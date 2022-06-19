@@ -21,5 +21,24 @@ public class UsuarioService {
     public UsuarioDTO findUsuarioByUserId(Integer UserId) {
         return ur.findByUserId(UserId).toDTO();
     }
+    
+    public Usuario setNewUsuario(UsuarioDTO usuario)
+    {
+        Integer rolid = 1;
+        Rol rol = this.rr.findRolById(rolid);
+        Usuario user = new Usuario();
+        user.setNombre(usuario.getNombre());
+        user.setApellido(usuario.getApellido());
+        user.setEmail(usuario.getEmail());
+        user.setRolId(rolid);
+        user.setRolByRolId(rol);
+        user.setDireccion(usuario.getDireccion());
+        user.setCiudad(usuario.getCiudad());
+        user.setSexo(usuario.getSexo());
+        user.setEdad(usuario.getEdad());
 
+        this.ur.save(user);
+
+        return user;
+    }
 }

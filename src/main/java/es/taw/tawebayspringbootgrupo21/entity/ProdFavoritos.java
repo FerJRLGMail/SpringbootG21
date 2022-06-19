@@ -13,6 +13,7 @@ public class ProdFavoritos {
     private Producto productoByProductId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     public Integer getId() {
         return id;
@@ -23,7 +24,7 @@ public class ProdFavoritos {
     }
 
     @Basic
-    @Column(name = "COMPRADOR_ID", nullable = true)
+    @Column(name = "COMPRADOR_ID", nullable = true, insertable = false, updatable = false)
     public Integer getCompradorId() {
         return compradorId;
     }
@@ -33,7 +34,7 @@ public class ProdFavoritos {
     }
 
     @Basic
-    @Column(name = "PRODUCT_ID", nullable = true)
+    @Column(name = "PRODUCT_ID", nullable = true, insertable = false, updatable = false)
     public Integer getProductId() {
         return productId;
     }
@@ -56,7 +57,7 @@ public class ProdFavoritos {
     }
 
     @ManyToOne
-    @JoinColumn(name = "COMPRADOR_ID", referencedColumnName = "USER_ID", insertable = false, updatable = false)
+    @JoinColumn(name = "COMPRADOR_ID", referencedColumnName = "USER_ID")
     public Usuario getUsuarioByCompradorId() {
         return usuarioByCompradorId;
     }
@@ -66,7 +67,7 @@ public class ProdFavoritos {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID", insertable = false, updatable = false)
+    @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
     public Producto getProductoByProductId() {
         return productoByProductId;
     }
